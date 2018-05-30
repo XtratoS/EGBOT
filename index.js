@@ -33,36 +33,41 @@ bot.on('message', (message) => {
 		message.channel.send(cstrep[input]);
 	}
 	
-	
-	if(input == "PM ALL" && message.member.roles.has(config.adminroleid) ){
-		roleID = config.memberroleid;
-		membersWithRole = message.guild.roles.get(roleID).members.forEach(function(guildMember, guildMemberId) {
-			console.log(guildMemberId);
-			bot.fetchUser(guildMemberId)
-			.then(user => {
-				user.send('test');
-				message.author.send("Success!, " + user.username + " Done");
-			}, rejection => {
-				message.author.send("Failed");
-			});
-		})
-	}
-	
-	if(input.toLowerCase().includes("activate")){
+	if(input.includes("activate")){
 		if(!message.member.roles.has(config.memberroleid)){
 			message.member.addRole(config.memberroleid).catch(console.error);
 			bot.channels.get(config.welcomechannelid).send("Please welcome our newest member"+ message.author +" أهلا بيك يحبب");
 		}
 	}
-	else if(input.toLowerCase().includes("scarlett"))
+	else if(input.includes("tts"))
+	{
+		message.channel.send(":apple:***SONDAGE :apple:\n + choix1 +  ou + + choix2 + ")
+            .then(function (message) {
+				message.react("↖");
+				message.react("⬆");
+				message.react("↗");
+				message.react("⬅");
+				
+				message.react("↖");
+				
+				message.react("➡");
+				message.react("↙");
+				message.react("⬇");
+				message.react("↘");
+				
+				//message.pin()
+				//message.delete()
+            }).catch(function() {
+				message.reply("error, meh");
+             });
+	}
+	else if(input.includes("scarlett"))
 		message.channel.send("Scarlett Johansson is Love <3");
 	else if(input.includes("rocket league"))
-		message.channel.send("I want to play rocket league right now", {tts: true});
-	else if(input.toLowerCase().includes("rocket league"))
-		message.channel.send("Best Game Ever");
-	else if(input.toLowerCase().includes("pubg"))
+		message.channel.send("I want to play rocket league right now, it's the best game ever created", {tts: true});
+	else if(input.includes("pubg"))
 		message.channel.send("Le3ba 5ara");
-	else if(input.toLowerCase().includes("هه") || input.toLowerCase().includes("هخه") || input.toLowerCase().includes("هخي"))
+	else if(input.includes(" هه") || input.includes("هخه") || input.includes("هخي"))
 		message.reply("نايص تفتيس يريء");
 	else if(input.includes("ؤق"))
 		message.reply("ؤق ناو تمم");
