@@ -54,14 +54,16 @@ bot.on('message', (message) => {
 			bot.channels.get(config.welcomechannelid).send("Please welcome our newest member"+ message.author +" أهلا بيك يحبب");
 		}
 	}
-	if(input.toLowerCase().includes("scarlett"))
+	else if(input.toLowerCase().includes("scarlett"))
 		message.channel.send("Scarlett Johansson is Love <3");
-	if(input.includes("rocket league"))
+	else if(input.includes("rocket league"))
 		message.channel.send("I want to play rocket league right now", {tts: true});
-	if(input.toLowerCase().includes("rocket league"))
+	else if(input.toLowerCase().includes("rocket league"))
 		message.channel.send("Best Game Ever");
-	if(input.toLowerCase().includes("pubg"))
+	else if(input.toLowerCase().includes("pubg"))
 		message.channel.send("Le3ba 5ara");
-	if(input.toLowerCase().includes("هه") || input.toLowerCase().includes("هخه") || input.toLowerCase().includes("هخي"))
+	else if(input.toLowerCase().includes("هه") || input.toLowerCase().includes("هخه") || input.toLowerCase().includes("هخي"))
 		message.reply("نايص تفتيس يريء");
+	else if(input.includes("ؤق"))
+		message.reply("ؤق ناو تمم");
 });
