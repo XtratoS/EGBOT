@@ -6,9 +6,9 @@ var end;
 module.exports = class StopWatchCommand extends commando.Command {
 	constructor(client){
 		super(client,{
-			name: 'stp',
+			name: 'sw',
 			group: 'timer',
-			memberName: 'stp',
+			memberName: 'sw',
 			description: 'Stopwatch',
 			args: [
 			{
@@ -23,9 +23,9 @@ module.exports = class StopWatchCommand extends commando.Command {
 	async run(message, {inp}){
 		if(inp == "s"){
 			start = Date.now();
-			message.reply("Stopwatch have started")
+			message.reply("```Stopwatch have started```")
 		}
-		else if(inp == "e"){
+		else if(inp == "t"){
 			end = Date.now();
 			var elapsed = (end - start) / 1000;
 			var mins=0;
