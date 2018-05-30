@@ -16,6 +16,16 @@ module.exports = class PMAllMembersCommand extends commando.Command {
 		});
 	}
 	
+	hasPermission(msg){
+		var admin = config.adminroleid;
+		if(msg.member.roles.has(admin)){
+			msg.reply("Ok");
+			return true;
+		}
+		else
+			return false;
+	}
+	
 	async run(message, {unipm}){
 		message.author.send("started sending "+ unipm + " to all users");
 		var roleID = config.memberroleid;
@@ -29,6 +39,5 @@ module.exports = class PMAllMembersCommand extends commando.Command {
 				message.author.send("Failed");
 			});
 		})
-		
 	}
 }
