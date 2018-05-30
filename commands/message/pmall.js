@@ -19,7 +19,6 @@ module.exports = class PMAllMembersCommand extends commando.Command {
 	hasPermission(msg){
 		var admin = config.adminroleid;
 		if(msg.member.roles.has(admin)){
-			msg.reply("Ok");
 			return true;
 		}
 		else
