@@ -23,7 +23,7 @@ module.exports = class StopWatchCommand extends commando.Command {
 	async run(message, {inp}){
 		if(inp == "s"){
 			start = Date.now();
-			message.reply("```Stopwatch have started```")
+			message.channel.send("``` Stopwatch have started ```")
 		}
 		else if(inp == "t"){
 			end = Date.now();
@@ -36,7 +36,7 @@ module.exports = class StopWatchCommand extends commando.Command {
 			for(var trash = 0; mins >= 60; mins -= 60){
 				hrs+=1;
 			}
-			message.reply("It took you " + hrs + ":" + mins +":" + elapsed);
+			message.channel.send("``` Stopwatch ran for " + hrs + ":" + mins +":" + elapsed" ```");
 		}
 	}
 }
