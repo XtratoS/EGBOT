@@ -10,7 +10,8 @@ bot.registry
 		['control', 'Control'],
 		['timer', 'Timer'],
 		['anime', 'Anime'],
-		['message', 'Message']
+		['message', 'Message'],
+		['minigames','MiniGames']
     ]);
 	
 bot.registry.registerCommandsIn(__dirname + "/commands");
@@ -39,34 +40,12 @@ bot.on('message', (message) => {
 			bot.channels.get(config.welcomechannelid).send("Please welcome our newest member"+ message.author +" أهلا بيك يحبب");
 		}
 	}
-	else if(input.includes("tts"))
-	{
-		message.channel.send(":apple:***SONDAGE :apple:\n + choix1 +  ou + + choix2 + ")
-            .then(function (message) {
-				message.react("↖");
-				message.react("⬆");
-				message.react("↗");
-				message.react("⬅");
-				
-				message.react("↖");
-				
-				message.react("➡");
-				message.react("↙");
-				message.react("⬇");
-				message.react("↘");
-				
-				//message.pin()
-				//message.delete()
-            }).catch(function() {
-				message.reply("error, meh");
-             });
-	}
 	else if(input.includes("scarlett"))
 		message.channel.send("Scarlett Johansson is Love <3");
 	else if(input.includes("rocket league"))
 		message.channel.send("I want to play rocket league right now, it's the best game ever created", {tts: true});
 	else if(input.includes("pubg"))
-		message.channel.send("Le3ba 5ara");
+		message.channel.send("le3ba 5ara");
 	else if(input.includes(" هه") || input.includes("هخه") || input.includes("هخي"))
 		message.reply("نايص تفتيس يريء");
 	else if(input.includes("ؤق"))

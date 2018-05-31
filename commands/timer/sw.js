@@ -36,7 +36,7 @@ module.exports = class StopWatchCommand extends commando.Command {
 			for(var trash = 0; mins >= 60; mins -= 60){
 				hrs+=1;
 			}
-			message.channel.send("``` Stopwatch ran for " + hrs + ":" + mins +":" + elapsed" ```");
+			message.channel.send("``` Stopwatch ran for " + hrs + ":" + mins +":" + elapsed + " ```");
 		}
 	}
 }
