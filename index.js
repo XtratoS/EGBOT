@@ -34,7 +34,24 @@ bot.on('message', (message) => {
 		message.channel.send(cstrep[input]);
 	}
 	
-	if(input.includes("activate")){
+	else if(input.includes("abc")){
+		message.author.send('Reply with r, p or s.')
+		.then(() => {
+			message.channel.awaitMessages(response => response.content === 'p', {
+				max: 1,
+				time: 10000,
+				errors: ['time'],
+			})
+			.then((collected) => {
+				message.author.send(`The collected message was: ${collected.first().content}`);
+			})
+			.catch(() => {
+				message.author.send('There was no collected message that passed the filter within the time limit!');
+			});
+		});
+	}
+	
+	else if(input.includes("activate")){
 		if(!message.member.roles.has(config.memberroleid)){
 			message.member.addRole(config.memberroleid).catch(console.error);
 			bot.channels.get(config.welcomechannelid).send("Please welcome our newest member"+ message.author +" أهلا بيك يحبب");
@@ -43,11 +60,7 @@ bot.on('message', (message) => {
 	else if(input.includes("scarlett"))
 		message.channel.send("Scarlett Johansson is Love <3");
 	else if(input.includes("rocket league"))
-		message.channel.send("I want to play rocket league right now, it's the best game ever created", {tts: true});
+		message.channel.send("I want to play rocket league right now, it's the best game ever created");
 	else if(input.includes("pubg"))
 		message.channel.send("le3ba 5ara");
-	else if(input.includes(" هه") || input.includes("هخه") || input.includes("هخي"))
-		message.reply("نايص تفتيس يريء");
-	else if(input.includes("ؤق"))
-		message.reply("ؤق ناو تمم");
 });
