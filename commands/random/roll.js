@@ -24,11 +24,11 @@ module.exports = class DiceRollCommand extends commando.Command {
 		});
 	}
 	
-	async run(message, {uplim, occurences}){
+	run(message, {uplim, occurences}){
 		for(var i=0; i<occurences; i++)
 		{
 			var roll = Math.floor(Math.random() * uplim) + 1;
-			message.reply("has rolled " + roll + " out of " + uplim);
+			message.channel.send(" :game_die: rolled " + roll + " of " + uplim);
 		}
 	}
 }

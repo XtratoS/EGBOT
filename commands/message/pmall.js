@@ -10,7 +10,7 @@ module.exports = class PMAllMembersCommand extends commando.Command {
 			description: 'sends a private message to all members',
 			args:[{
 				key: 'unipm',
-				prompt: 'Please enter the message that you would like to send',
+				prompt: 'please enter the message that you would like to send',
 				type:'string'
 			}]
 		});
@@ -18,10 +18,8 @@ module.exports = class PMAllMembersCommand extends commando.Command {
 	
 	hasPermission(msg){
 		var admin = config.adminroleid;
-		if(msg.member.roles.has(admin)){
+		if(msg.member.roles.has(admin))
 			return true;
-		}
-		else
 			return false;
 	}
 	
@@ -33,9 +31,9 @@ module.exports = class PMAllMembersCommand extends commando.Command {
 			this.client.fetchUser(guildMemberId)
 			.then(user => {
 				user.send(unipm);
-				message.author.send("Success!, " + user.username + " Done");
+				message.author.send("message sent to, " + user.username);
 			}, rejection => {
-				message.author.send("Failed");
+				message.author.send("failed to send to " + user.username);
 			});
 		})
 	}

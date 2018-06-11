@@ -9,7 +9,8 @@ module.exports = class StopWatchCommand extends commando.Command {
 			name: 'sw',
 			group: 'timer',
 			memberName: 'sw',
-			description: 'Stopwatch',
+			description: 'stopwatch',
+			guildOnly: true,
 			args: [
 			{
 				key: 'inp',

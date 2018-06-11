@@ -6,12 +6,11 @@ module.exports = class AnimeListCommand extends commando.Command {
 			name: 'anirec',
 			group: 'anime',
 			memberName: 'anirec',
-			description: 'a link to myanimelist',
+			description: 'shows the link to myanimelist',
 		});
 	}
 	
-	async run(message, {inp}){
+	run(message, {inp}){
 		message.reply("This is my anime list, take a look at it https://myanimelist.net/animelist/XtratoS");
 	}
 }
-

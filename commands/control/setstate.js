@@ -1,7 +1,6 @@
 const commando = require('discord.js-commando');
 
 module.exports = class ChangeStatusCommand extends commando.Command {
-	
 	constructor(client){
 		super(client,{
 			name: 'setstate',
@@ -19,9 +18,13 @@ module.exports = class ChangeStatusCommand extends commando.Command {
 			]
 		})
 	}
-	
-	async run(message, args){
-		client.user.setActivity(status);
+	hasPermission(msg) {
+		if (!this.client.isOwner(msg.author)) return 'Only the bot owner(s) may use this command.';
+		return true;
+	}
+	run(message, {status}){
+		this.client.user.setActivity(status);
+		message.channel.send("bot status to \"" + status + "\"");
 	}
 	
 }

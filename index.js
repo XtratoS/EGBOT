@@ -1,7 +1,10 @@
-const commando = require('discord.js-commando');
+const { CommandoClient, SQLiteProvider } = require('discord.js-commando');
 const cstrep = require("./customreplies.json");
 const config = require("./config.json");
-const bot = new commando.Client({unknownCommandResponse: false});
+const bot = new CommandoClient({
+	commandPrefix: config.prefix,
+    unknownCommandResponse: false,
+    owner: config.ownerId});
 var shatayem = ['تعالى مصمص', 'منيوك', 'معيرص', 'يابن المارة الوسخة', 'يلعن ميتين أهلك', 'yel3n maytein ahlak', 'yabn el wes5a', ' ya 3ars', 'ya 5awal', 'ya metnak', 'kosomk', 'kosomein omak', 'sharmoot', 'tezak 2ar3a', 'tezak 7amra', 'fuck you', 'suck my dick', 'madafaka', 'Biitch', 'تعمنيقق', 'كسمك', 'خول'];
 bot.registry
 	.registerDefaults()
@@ -20,6 +23,7 @@ bot.on('ready', () => {
 console.log('Logged in!');
 bot.user.setActivity(config.activity);
 });
+
 bot.login(config.btoken);
 
 bot.on('guildMemberAdd', member => {
@@ -35,6 +39,7 @@ bot.on('message', (message) => {
 	}
 	
 	else if(input.includes("abc")){
+		console.log(data[message.guild.id])
 		message.author.send('Reply with r, p or s.')
 		.then(() => {
 			message.channel.awaitMessages(response => response.content === 'p', {
